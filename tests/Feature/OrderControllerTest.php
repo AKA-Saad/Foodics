@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
@@ -17,9 +18,10 @@ class OrderControllerTest extends TestCase
     public function testStoreOrder()
     {
         Mail::fake();  
-        $beef = Ingredient::factory()->create(['name' => 'Beef','stock' => 0, 'total_stock' => 20, 'unit'=> 'kg' ]);
-        $cheese = Ingredient::factory()->create(['name' => 'Cheese', 'stock' => 0, 'total_stock' => 5, 'unit' => 'kg']);
-        $onion = Ingredient::factory()->create(['name' => 'Onion', 'stock' => 0, 'total_stock' => 1, 'unit' => 'kg']);
+        Artisan::call('db:seed');
+        $beef = Ingredient::where('name' , 'Beef')->first();
+        $cheese = Ingredient::where('name' , 'cheese')->first();
+        $onion = Ingredient::where('name' , 'onion')->first();
 
         $burger = Product::factory()->create(['name' => 'Burger']);
         $burger->ingredients()->attach($beef, ['quantity' => 150]);
