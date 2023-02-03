@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->decimal('stock', 8, 2);
-            $table->string('order_confirmation_email_sent')->default(false);
+            $table->string('merchant_email_sent')->default(false);
             $table->decimal('total_stock', 8, 2);
             $table->enum('unit', ['kg', 'g'])->nullable();
             $table->timestamps();

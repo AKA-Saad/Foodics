@@ -34,7 +34,7 @@ class Ingredient extends Model
     public function scopeLowStock($query)
     {
        
-        $ingredients = $this->where('stock', '!=', 0)->get()->filter(function ($item) {
+        $ingredients = $this->where('merchant_email_sent' , false)->get()->filter(function ($item) {
             $half_total_stock = $item->unit == 'kg' ? ($item->total_stock * 1000) * 0.5 : $item->total_stock * 0.5;
             if ($half_total_stock <= $item->stock) {
                 return $item;

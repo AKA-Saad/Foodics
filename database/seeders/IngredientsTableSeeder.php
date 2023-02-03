@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Ingredient ;
+use App\Models\Ingredient;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -36,8 +36,8 @@ class IngredientsTableSeeder extends Seeder
                 'unit' => 'kg',
             ],
         ];
-     
-    
+
+
         foreach ($ingredients as $ingredient) {
             Ingredient::create($ingredient);
         }
