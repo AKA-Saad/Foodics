@@ -19,6 +19,7 @@ class OrderControllerTest extends TestCase
     {
         Mail::fake();  
         Artisan::call('db:seed');
+        
         $beef = Ingredient::where('name' , 'Beef')->first();
         $cheese = Ingredient::where('name' , 'cheese')->first();
         $onion = Ingredient::where('name' , 'onion')->first();
